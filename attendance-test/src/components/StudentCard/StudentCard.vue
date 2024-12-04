@@ -1,8 +1,8 @@
 <script setup lang="ts">
-    import { onMounted, PropType } from "vue";
+    import { ref , PropType } from "vue";
     import Students from "../../interfaces/Students";
     import Avatar from "../Avatar/Avatar.vue";
-    import { getAttendanceByStudent } from "../../engine/appEngine";
+    import AttendanceCard from "../AttendanceCard/AttendanceCard.vue";
 
     const props = defineProps({
         student: {
@@ -11,22 +11,24 @@
         }
     });
 
-    console.log(props.student);
+    const isDetailsVisible = ref(false);
 
-    onMounted(async() => {
-        const res = await getAttendanceByStudent(props.student.ra);
-        console.log(res.result);
-    })
+    const toggleDetails = () => {
+        isDetailsVisible.value = !isDetailsVisible.value;
+    };
 </script>
 
 <template>
-    <div class="student-card__container">
-        <Avatar :photo="props.student.photo_url" />
-        <div class="students-info">
-            <span>{{ props.student.name }}</span>
-            <span>{{ props.student.ra }}</span>
-            <span>{{ props.student.course }}</span>
+    <div>
+        <div class="student-card__container" @click="toggleDetails">
+            <Avatar :photo="props.student.photo_url" />
+            <div class="students-info">
+                <span>{{ props.student.name }}</span>
+                <span>{{ props.student.ra }}</span>
+                <span>{{ props.student.course }}</span>
+            </div>
         </div>
+        <AttendanceCard v-if="isDetailsVisible" :student_ra="props.student.ra"/>
     </div>
 </template>
 
@@ -36,6 +38,7 @@
         flex-direction: row;
         column-gap: 16px;
         align-items: center;
+        cursor: pointer;
     }
 
     .students-info {

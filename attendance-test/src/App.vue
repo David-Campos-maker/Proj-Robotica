@@ -22,7 +22,7 @@
 
 <template>
   <div class="list__container">
-    <div v-for="student in studentsRef" :key="student.ra">
+    <div class="student-row" v-for="student in studentsRef" :key="student.ra">
       <StudentsCard :student="student" />
     </div>  
   </div>
@@ -30,8 +30,13 @@
 
 <style scoped>
   .list__container {
+    max-width: 500px;
     display: flex;
     flex-direction: column;
     row-gap: 14px;
+  }
+  .student-row {
+    display: flex;
+    flex: 1 auto;
   }
 </style>
