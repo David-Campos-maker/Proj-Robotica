@@ -23,10 +23,10 @@
         <div class="student-card__container" @click="toggleDetails">
             <Avatar :photo="props.student.photo_url" />
             <div class="students-info">
-                <span>{{ props.student.name }}</span>
-                <span>{{ props.student.ra }}</span>
-                <span>{{ props.student.course }}</span>
+                <span>Nome: {{ props.student.name }}</span>
+                <span>RA: {{ props.student.ra }}</span>
             </div>
+            <span class="students-info__course">{{ props.student.course }}</span>
         </div>
         <AttendanceCard v-if="isDetailsVisible" :student_ra="props.student.ra"/>
     </div>
@@ -34,11 +34,19 @@
 
 <style scoped>
     .student-card__container {
+        width: 400px;
         display: flex;
         flex-direction: row;
-        column-gap: 16px;
         align-items: center;
+        justify-content: space-between;
         cursor: pointer;
+        border-radius: 16px;
+        border: 1px solid #363636;
+        padding: 8px;
+    }
+
+    .student-card__container:hover {
+        background-color: #363636; 
     }
 
     .students-info {
@@ -46,5 +54,14 @@
         flex-direction: row;
         column-gap: 8px;
         align-items: center;
+    }
+    .students-info__course {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 16px;
+        padding: 4px;
+        background-color: #836FFF;
+        color: #F2F2F2;
     }
 </style>

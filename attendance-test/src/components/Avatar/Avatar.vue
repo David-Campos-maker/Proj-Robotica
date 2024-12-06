@@ -12,8 +12,8 @@
 
 <style>
     .avatar{
-        width: 65px;
-        height: 65px;
+        width: 45px;
+        height: 45px;
         border-radius: 50%;
         object-fit: cover;
     }

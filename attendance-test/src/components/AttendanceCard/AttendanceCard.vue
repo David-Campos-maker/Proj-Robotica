@@ -39,6 +39,10 @@
 
 <style scoped>
     .attendance-card__container {
+        padding: 10px;
+        background-color: #363636;
+        border-radius: 16px;
+        margin-top: 8px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -53,7 +57,8 @@
     .absent {
         display: flex;
         align-items: center;
-        border-radius: 15px;
+        justify-content: center;
+        border-radius: 16px;
         padding: 4px;
         background-color: #FF0000;
         color: #F2F2F2F2;
@@ -61,7 +66,8 @@
     .present {
         display: flex;
         align-items: center;
-        border-radius: 15px;
+        justify-content: center;
+        border-radius: 16px;
         padding: 4px;
         background-color: #32CD32;
         color: #F2F2F2F2;
